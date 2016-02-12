@@ -14,28 +14,34 @@ public class Bullet extends Actor
         direction = dir;
         speed = 5;
     }
-    public void destroyEnemies()
-    {
-        //"Enemy" can be any class that you want the bullet to destroy. 
-        Actor enemy = getOneIntersectingObject(Enemy.class);
-        if(enemy != null) 
-            {
-            World myWorld = getWorld();
-            getWorld().removeObject(enemy); 
-            getWorld().removeObject(this);
-        }
-}
+ 
     public void act()
     {
         setRotation(direction);
         move(speed);
+         destroyEnemies();
+         if (getWorld().getObjects(Zombie.class).isEmpty()) {
+          Greenfoot.stop();
+     }
         if(isAtEdge())
         {
            getWorld().removeObject(this);
         }
-   
+       
     }
     
+      public void destroyEnemies()
+    {
+         
+      Actor zombie = getOneIntersectingObject(Zombie.class);
+      if(zombie != null) 
+           {
+           World myWorld = getWorld();
+           getWorld().removeObject(zombie); 
+           getWorld().removeObject(this);
+           }
+         
+    }
     
 }
 

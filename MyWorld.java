@@ -26,7 +26,7 @@ public class MyWorld extends World
         prepare();
         
   }
-   public void act()
+    public void act()
 {
      checkPlayers();
 }
@@ -37,6 +37,7 @@ private void checkPlayers()
           Greenfoot.stop();
      }
 }
+
   private void prepare()
     {
         

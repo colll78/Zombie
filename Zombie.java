@@ -53,13 +53,13 @@ public class Zombie extends Actor
     }
         getWorld().showText("Marines:" + marinesEaten,100,30);
        
-       Bullet bullet = (Bullet) getOneIntersectingObject(Bullet.class);
+    /*   Bullet bullet = (Bullet) getOneIntersectingObject(Bullet.class);
         if (bullet != null) {       
         World world;
         world = getWorld();
         world.removeObject(this);  
         Greenfoot.playSound("Pain.wav");
-    }
+    }*/
     }
     
     public void checkWorld()
