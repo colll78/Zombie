@@ -26,7 +26,17 @@ public class MyWorld extends World
         prepare();
         
   }
-   
+   public void act()
+{
+     checkPlayers();
+}
+ 
+private void checkPlayers()
+{
+     if (getObjects(Zombie.class).isEmpty()) {
+          Greenfoot.stop();
+     }
+}
   private void prepare()
     {
         
