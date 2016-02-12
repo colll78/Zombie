@@ -14,6 +14,17 @@ public class Bullet extends Actor
         direction = dir;
         speed = 5;
     }
+    public void destroyEnemies()
+    {
+        //"Enemy" can be any class that you want the bullet to destroy. 
+        Actor enemy = getOneIntersectingObject(Enemy.class);
+        if(enemy != null) 
+            {
+            World myWorld = getWorld();
+            getWorld().removeObject(enemy); 
+            getWorld().removeObject(this);
+        }
+}
     public void act()
     {
         setRotation(direction);
