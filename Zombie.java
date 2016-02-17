@@ -16,7 +16,7 @@ public class Zombie extends Actor
 {
     private int marinesEaten;
     public static int lives = 3;
-    long ct = System.currentTimeMillis(); //update time
+    //long ct = System.currentTimeMillis(); //update time
     
     public Zombie()  //Initializes Zombie
     {
@@ -25,7 +25,7 @@ public class Zombie extends Actor
     
     public void act() 
     {
-        ct = System.currentTimeMillis(); //update time
+       // ct = System.currentTimeMillis(); //update time
         checkKeyPress();
         lookforMarines();
         checkWorld();
@@ -46,8 +46,8 @@ public class Zombie extends Actor
         if (Greenfoot.isKeyDown("w"))
         {
           
-            long t = System.currentTimeMillis();
-            long
+           // long t = System.currentTimeMillis();
+          // if( 
             
             move(2);
         } 
