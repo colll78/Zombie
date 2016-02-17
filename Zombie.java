@@ -16,7 +16,8 @@ public class Zombie extends Actor
 {
     private int marinesEaten;
     public static int lives = 3;
-    //long ct = System.currentTimeMillis(); //update time
+    boolean rFoot = false;
+    double wTime = 0;  // Walking animation timer
     
     public Zombie()  //Initializes Zombie
     {
@@ -25,11 +26,10 @@ public class Zombie extends Actor
     
     public void act() 
     {
-       // ct = System.currentTimeMillis(); //update time
         checkKeyPress();
         lookforMarines();
         checkWorld();
-        walking();
+        wTime = wTime + 1;
     }
     
     public void checkKeyPress()
@@ -45,18 +45,37 @@ public class Zombie extends Actor
         
         if (Greenfoot.isKeyDown("w"))
         {
-          
-           // long t = System.currentTimeMillis();
-          // if( 
-            
+           if( rFoot == true && wTime % 15 == 0)
+           {
+            this.setImage("zombie_walk1.png");
+            rFoot = false;
+           }
+           else if(wTime % 15 == 0){
+            this.setImage("zombie_walk2.png");
+            rFoot = true;
+            }
             move(2);
         } 
-
+        if (!Greenfoot.isKeyDown("w") && !Greenfoot.isKeyDown("s") )
+        {     
+           if( rFoot = true)
+           {
+            this.setImage("zombie_walk3.png");
+           }
+           
+        } 
         if (Greenfoot.isKeyDown("s"))
         {
-            
-            
-            move(-2);
+            if( rFoot == true && wTime % 15 == 0)
+           {
+            this.setImage("zombie_walk2.png");
+            rFoot = false;
+           }
+           else if(wTime % 15 == 0){
+            this.setImage("zombie_walk1.png");
+            rFoot = true;
+            }
+           move(-2);
         } 
     }
     
@@ -89,15 +108,4 @@ public class Zombie extends Actor
            }
     }
 }
-   public void walking(){
-       int walk = 0;
-       
-       this.setImage("zombie_walk1.png");
-      
-       this.setImage("zombie_walk2.png");
-       
-       
-       
-    }
-
 }
