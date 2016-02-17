@@ -15,6 +15,7 @@ import java.util.Set;
 public class Zombie extends Actor
 {
     private int marinesEaten;
+    public static int lives = 3;
     
     public Zombie()  //Initializes Zombie
     {
@@ -23,10 +24,11 @@ public class Zombie extends Actor
     
     public void act() 
     {
-        move(2);
+        
         checkKeyPress();
         lookforMarines();
         checkWorld();
+        walking();
     }
     
     public void checkKeyPress()
@@ -39,8 +41,21 @@ public class Zombie extends Actor
         {
             turn(4);
         } 
+        
+        if (Greenfoot.isKeyDown("w"))
+        {
+          
+            
+            
+            move(2);
+        } 
 
-
+        if (Greenfoot.isKeyDown("s"))
+        {
+            
+            
+            move(-2);
+        } 
     }
     
     public void lookforMarines()
@@ -51,15 +66,9 @@ public class Zombie extends Actor
         marinesEaten = marinesEaten + 1;
         Greenfoot.playSound("slurp.wav");
     }
-        getWorld().showText("Marines:" + marinesEaten,100,30);
-       
-    /*   Bullet bullet = (Bullet) getOneIntersectingObject(Bullet.class);
-        if (bullet != null) {       
-        World world;
-        world = getWorld();
-        world.removeObject(this);  
-        Greenfoot.playSound("Pain.wav");
-    }*/
+        getWorld().showText("Marines Eaten:" + marinesEaten,100,30);
+        getWorld().showText("Lives:" + lives,60,15);
+    
     }
     
     public void checkWorld()
@@ -78,4 +87,15 @@ public class Zombie extends Actor
            }
     }
 }
+   public void walking(){
+       int walk = 0;
+       
+       this.setImage("zombie_walk1.png");
+      
+       this.setImage("zombie_walk2.png");
+       
+       
+       
+    }
+
 }

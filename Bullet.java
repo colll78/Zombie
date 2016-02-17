@@ -19,28 +19,44 @@ public class Bullet extends Actor
     {
         setRotation(direction);
         move(speed);
-         destroyEnemies();
-         if (getWorld().getObjects(Zombie.class).isEmpty()) {
-          Greenfoot.stop();
-     }
-        if(isAtEdge())
-        {
-           getWorld().removeObject(this);
-        }
+      
+        removeBullet();
+       
+        // Ends game if no zombie
+        // if(getWorld().getObjects(Zombie.class).isEmpty()) {
+       //   Greenfoot.stop();
+       // }
+        
+       
+     
+        
        
     }
     
-      public void destroyEnemies()
+      public void removeBullet()
     {
+       boolean deleteMe = false;
+        if(isAtEdge())
+        {  
+         World myWorld = getWorld();
+         deleteMe = true;
          
+       }
       Actor zombie = getOneIntersectingObject(Zombie.class);
       if(zombie != null) 
            {
            World myWorld = getWorld();
+           --Zombie.lives;
+           deleteMe = true;
+           if(Zombie.lives <= 0){
+           getWorld().showText("Lives:" + 0,60,15);
            getWorld().removeObject(zombie); 
-           getWorld().removeObject(this);
            }
+        }
          
+        if (deleteMe == true){
+       getWorld().removeObject(this);
+    }
     }
     
 }

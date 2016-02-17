@@ -43,6 +43,7 @@ private void checkPlayers()
         
         Zombie zombie = new Zombie();
         addObject(zombie,getWidth()/2,getHeight()/2);
+        Zombie.lives = 3;
         
         Marine marine = new Marine();
         addObject(marine,(int)(Math.random() * ((800) + 1)),(int)(Math.random() * ((600) + 1)));
