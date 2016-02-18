@@ -15,6 +15,9 @@ import java.util.Set;
 public class Zombie extends Actor
 {
     private int marinesEaten;
+    public static int lives = 3;
+    boolean rFoot = false;
+    double wTime = 0;  // Walking animation timer
     
     public Zombie()  //Initializes Zombie
     {
@@ -23,9 +26,10 @@ public class Zombie extends Actor
     
     public void act() 
     {
-        move(3);
         checkKeyPress();
         lookforMarines();
+        checkWorld();
+        wTime = wTime + 1;
     }
     
     public void checkKeyPress()
@@ -38,8 +42,41 @@ public class Zombie extends Actor
         {
             turn(4);
         } 
-
-
+        
+        if (Greenfoot.isKeyDown("w"))
+        {
+           if( rFoot == true && wTime % 15 == 0)
+           {
+            this.setImage("zombie_walk1.png");
+            rFoot = false;
+           }
+           else if(wTime % 15 == 0){
+            this.setImage("zombie_walk2.png");
+            rFoot = true;
+            }
+            move(2);
+        } 
+        if (!Greenfoot.isKeyDown("w") && !Greenfoot.isKeyDown("s") )
+        {     
+           if( rFoot = true)
+           {
+            this.setImage("zombie_walk3.png");
+           }
+           
+        } 
+        if (Greenfoot.isKeyDown("s"))
+        {
+            if( rFoot == true && wTime % 15 == 0)
+           {
+            this.setImage("zombie_walk2.png");
+            rFoot = false;
+           }
+           else if(wTime % 15 == 0){
+            this.setImage("zombie_walk1.png");
+            rFoot = true;
+            }
+           move(-2);
+        } 
     }
     
     public void lookforMarines()
@@ -50,8 +87,25 @@ public class Zombie extends Actor
         marinesEaten = marinesEaten + 1;
         Greenfoot.playSound("slurp.wav");
     }
-        getWorld().showText("Marines:" + marinesEaten,100,30);
-       
+        getWorld().showText("Marines Eaten:" + marinesEaten,100,30);
+        getWorld().showText("Lives:" + lives,60,15);
+    
     }
     
+    public void checkWorld()
+    {
+        if(isAtEdge())
+        {
+           if(this.getX() == getWorld().getWidth())
+           {
+           getWorld().addObject(this,0,this.getY());
+           getWorld().removeObject(this);
+           }
+            if(this.getY() == getWorld().getHeight())
+           {
+           getWorld().addObject(this,this.getX(),0);
+           getWorld().removeObject(this);
+           }
+    }
+}
 }
