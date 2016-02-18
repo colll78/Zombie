@@ -8,7 +8,7 @@ import java.awt.Color;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Marine extends Actor
+public class ZMarine extends Actor
 {
     /**
      * Act - do whatever the Marine wants to do. This method is called whenever
@@ -17,15 +17,13 @@ public class Marine extends Actor
     double time =0;
     public void act() 
     {
-        move(3);
+        move(1);
         turnAtEdge();
         randomTurn();
         
         if (time % 60 ==0 )
         {
-            double x = getX() + 20*Math.cos(getRotation());
-            double y = getY() + 20*Math.sin(getRotation());
-        getWorld().addObject(new Bullet(getRotation()),(int)x ,(int)y );    
+        getWorld().addObject(new Bullet(getRotation()), getX(), getY());    
         }
         time = time + 1;
     }    

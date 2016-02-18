@@ -31,6 +31,7 @@ public class MyWorld extends World
     {
         Zombie zombie = new Zombie();
         addObject(zombie,273,337);
+        Zombie.lives = 3;
         
         Marine marine = new Marine();
         addObject(marine,215,406);
