@@ -8,18 +8,24 @@ import java.awt.Color;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Marine extends Actor
+public class ZMarine extends Actor
 {
     /**
      * Act - do whatever the Marine wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
+    double time =0;
     public void act() 
     {
-        move(5);
+        move(1);
         turnAtEdge();
         randomTurn();
         
+        if (time % 60 ==0 )
+        {
+        getWorld().addObject(new Bullet(getRotation()), getX(), getY());    
+        }
+        time = time + 1;
     }    
     
     public void randomTurn()
