@@ -82,14 +82,16 @@ public class Zombie extends Actor
     public void lookforMarines()
     {
         Marine marine = (Marine) getOneIntersectingObject(Marine.class);
+        ZMarine zmarine = new ZMarine();
         if (marine != null) {       
         removeTouching(Marine.class);
+        getWorld().addObject(zmarine,getX(),getY());
         marinesEaten = marinesEaten + 1;
         Greenfoot.playSound("slurp.wav");
-    }
+        }
         getWorld().showText("Marines Eaten:" + marinesEaten,100,30);
         getWorld().showText("Lives:" + lives,60,15);
-    
+      
     }
     
     public void checkWorld()
