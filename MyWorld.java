@@ -21,7 +21,7 @@ public class MyWorld extends World
     public MyWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(800, 600, 1); 
+        super(560, 560, 1); 
         setPaintOrder(Zombie.class, Marine.class);
         prepare();
         
@@ -29,26 +29,25 @@ public class MyWorld extends World
    
   private void prepare()
     {
-        
         Zombie zombie = new Zombie();
-        addObject(zombie,getWidth()/2,getHeight()/2);
+        addObject(zombie,273,337);
         
         Marine marine = new Marine();
-        addObject(marine,(int)(Math.random() * ((800) + 1)),(int)(Math.random() * ((600) + 1)));
+        addObject(marine,215,406);
         
         Marine marine2 = new Marine();
-        addObject(marine2,(int)(Math.random() * ((800) + 1)),(int)(Math.random() * ((600) + 1)));
+        addObject(marine2,115,406);
         
         Marine marine3 = new Marine();
-        addObject(marine3,(int)(Math.random() * ((800) + 1)),(int)(Math.random() * ((600) + 1)));
+        addObject(marine3,175,3406);
         
         Marine marine4 = new Marine();
-        addObject(marine4,(int)(Math.random() * ((800) + 1)),(int)(Math.random() * ((600) + 1)));
+        addObject(marine4,15,06);
         
         Marine marine5 = new Marine();
-        addObject(marine5,(int)(Math.random() * ((800) + 1)),(int)(Math.random() * ((600) + 1)));
+        addObject(marine5,115,406);
         
         Marine marine6 = new Marine();
-        addObject(marine6,(int)(Math.random() * ((800) + 1)),(int)(Math.random() * ((600) + 1)));
+        addObject(marine6,75,306);
     }
 }

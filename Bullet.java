@@ -14,17 +14,39 @@ public class Bullet extends Actor
         direction = dir;
         speed = 5;
     }
+ 
     public void act()
     {
         setRotation(direction);
         move(speed);
-        if(isAtEdge())
-        {
-           getWorld().removeObject(this);
-        }
-   
+        removeBullet();
     }
     
-    
+      public void removeBullet()
+    {
+       boolean deleteMe = false;
+       Actor zombie = getOneIntersectingObject(Zombie.class);
+           
+        if(isAtEdge())
+        {  
+         deleteMe = true; 
+       }
+      
+       if(zombie != null) 
+           {
+           --Zombie.lives;
+           deleteMe = true;
+           if(Zombie.lives <= 0){
+             getWorld().showText("Lives:" + 0,60,15);
+             getWorld().removeObject(zombie); 
+             }
+       }
+                 
+       if (deleteMe == true){
+          getWorld().removeObject(this);
+        }
+  }
 }
+    
+
 
